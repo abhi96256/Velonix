@@ -31,7 +31,7 @@ const Footer = () => {
           <div style={{ marginTop: '0.5rem',fontSize: '1.1rem' }}>
             <div className="contact-details-container"></div>
        
-          <div className="contact-details-heading" style={{ fontWeight: 440, marginBottom: '13px', marginLeft: '-197px',fontWeight: 499 }}>
+          <div className="contact-details-heading" style={{ fontWeight: 500, marginBottom: '13px', marginLeft: '-197px' }}>
   Contact Details
 </div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
         <div className="footer-section-separator2" />
         {/* Social Icons with PNGs from public/images in the fourth column */}
         <div className="section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <div className="contact-details-heading1"style={{ fontWeight: 400, fontSize: '1.1rem', color: '#181818', marginTop: '49px', letterSpacing: '0.5px', marginRight: '140px',fontWeight: 499 }}>Follow us</div>
+          <div className="contact-details-heading1"style={{ fontWeight: 500, fontSize: '1.1rem', color: '#181818', marginTop: '49px', letterSpacing: '0.5px', marginRight: '140px' }}>Follow us</div>
           <div   className="contact-details-heading2" style={{ display: 'flex', gap: '24px', marginTop: '20px', marginRight: '80px' }}>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
               onMouseEnter={e => e.currentTarget.firstChild.style.transform = 'scale(1.18)'}

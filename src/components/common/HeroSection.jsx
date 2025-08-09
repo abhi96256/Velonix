@@ -5,7 +5,7 @@ import TwitterIcon from '../../assets/Twitter.png';
 import InstaIcon from '../../assets/Insta.png';
 import Lottie from 'lottie-react';
 import ScrollLottie from '../../assets/Scroll.json';
-import BackgroundImage from '../../assets/Bg.Png';
+import BackgroundImage from '../../assets/Bg.png';
 
 const word = "VELONIX";
 const DOT_SIZE = window.innerWidth <= 480 ? 4 : 8;
