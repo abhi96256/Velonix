@@ -1,0 +1,280 @@
+/* Header component styles */
+
+/* .header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+} */
+
+header {
+  background: transparent !important;
+  transition: background 0.3s;
+}
+
+.fixed {
+  position: fixed;
+  background-color: transparent !important;
+  transition: background-color 0.3s ease;
+}
+
+header.scrolled-header {
+  background: #000 !important;
+  background-color: #000 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
+  transition: background-color 0.3s, box-shadow 0.3s !important;
+}
+
+.logo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 8rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+}
+
+.logo span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.logo span:nth-child(1) { animation-delay: 0.1s; }
+.logo span:nth-child(2) { animation-delay: 0.2s; }
+.logo span:nth-child(3) { animation-delay: 0.3s; }
+.logo span:nth-child(4) { animation-delay: 0.4s; }
+.logo span:nth-child(5) { animation-delay: 0.5s; }
+.logo span:nth-child(6) { animation-delay: 0.6s; }
+.logo span:nth-child(7) { animation-delay: 0.7s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    transition: background-color 0.3s, box-shadow 0.3s !important;
+  }
+  header.scrolled-header {
+    
+    background-color: #000 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5) !important;
+    transition: background-color 0.3s, box-shadow 0.3s !important;
+  }
+  header.fixed.top-0.left-0.w-full.z-50.transition-all.duration-300.py-5 {
+    background-color: black !important;
+  }
+  .logo {
+    font-size: 2.5rem;
+  }
+  .melanie-logo {
+    height: 19px;
+  }
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    transition: opacity 0.3s;
+  }
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 80vw;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(24, 24, 24, 0.65);
+    backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: -4px 0 32px 0 rgba(0,0,0,0.35), 0 4px 32px 0 rgba(255,234,0,0.04);
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 2.5rem 2rem 2rem 1.5rem;
+    padding-top: 4.5rem;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77,0,0.18,1), background 0.3s;
+    overflow: hidden;
+  }
+  .mobile-menu::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(135deg, rgba(255,234,0,0.08) 0%, rgba(255,255,255,0.04) 100%);
+    pointer-events: none;
+  }
+  .mobile-menu.active {
+    transform: translateX(0);
+  }
+  .mobile-menu .nav-link {
+    font-size: 1.25rem !important;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s, color 0.2s, transform 0.4s, opacity 0.4s;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: translateX(40px);
+    animation: menuItemFadeIn 0.6s forwards;
+  }
+  .mobile-menu.active .nav-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .mobile-menu .nav-link:nth-child(2) { animation-delay: 0.12s; }
+  .mobile-menu .nav-link:nth-child(3) { animation-delay: 0.22s; }
+  .mobile-menu .nav-link:nth-child(4) { animation-delay: 0.32s; }
+  .mobile-menu .nav-link:nth-child(5) { animation-delay: 0.42s; }
+  @keyframes menuItemFadeIn {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .mobile-menu .nav-link:hover {
+    background: rgba(255,234,0,0.10);
+    color: #ffea00;
+    box-shadow: 0 2px 8px 0 rgba(255,234,0,0.08);
+  }
+  .close-menu-btn {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 1002;
+    transition: color 0.2s;
+  }
+  .close-menu-btn:hover {
+    color: #ffea00;
+  }
+}
+
+.melanie-logo {
+  height: 32px;
+  width: auto;
+  display: block;
+  margin-right: 1rem;
+}
+
+@media (max-width: 768px) {
+  .melanie-logo {
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .melanie-logo {
+    height: 20px;
+  }
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+nav a, .nav-links a, .navbar a {
+  font-size: 0.9rem !important;
+  padding: 0.5rem 0.5rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  
+}
+
+@media (max-width: 768px) {
+  nav a, .nav-links a, .navbar a {
+    font-size: 0.75rem !important;
+    padding: 0.1rem 0.4rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  nav a, .nav-links a, .navbar a {
+    font-size: 0.7rem !important;
+    padding: 0.1rem 0.3rem !important;
+  }
+  
+  .mobile-menu .nav-link {
+    font-size: 1rem !important;
+  }
+} 

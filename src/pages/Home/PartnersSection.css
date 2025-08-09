@@ -1,0 +1,129 @@
+/* PartnersSection component styles */
+
+/*.partners-section {
+  background: #000;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+
+/* Slider container */
+/*.partners-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  position: relative;
+}
+
+/* Track holding the logos */
+  .partners-track {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  animation: scrollLogos 30s linear infinite;
+  width: max-content;
+}
+
+/* Pause animation on hover */
+.partners-slider.paused .partners-track {
+  animation-play-state: paused;
+}
+
+/* Each partner logo item */
+.partner-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.partner-item:hover, .partner-item.hovered {
+  transform: scale(1.05);
+}
+
+.partner-logo {
+  height: 55px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  /* Remove transition for filter to prevent showing two colors */
+  /* Default yellow tint */
+  filter: brightness(0) saturate(100%) invert(91%) sepia(100%) saturate(7480%) hue-rotate(2deg) brightness(104%) contrast(104%);
+}
+
+/* Starbucks logo on hover - Dark green */
+.partner-item.starbucks-color .partner-logo {
+  filter: brightness(0) saturate(100%) invert(23%) sepia(87%) saturate(1052%) hue-rotate(118deg) brightness(95%) contrast(101%);
+}
+
+/* Walmart logo on hover - Darker True Blue */
+.partner-item.walmart-color .partner-logo {
+  filter: invert(15%) sepia(90%) saturate(2368%) hue-rotate(197deg) brightness(70%) contrast(110%);
+}
+
+/* McDonald's logo on hover - pure white */
+.partner-item.mcdonalds-color .partner-logo {
+  filter: grayscale(100%) brightness(10);
+}
+
+/* Nestle logo on hover - red */
+.partner-item.nestle-color .partner-logo {
+  filter: brightness(0) saturate(100%) invert(14%) sepia(96%) saturate(6466%) hue-rotate(359deg) brightness(97%) contrast(118%);
+}
+
+/* Pepsi logo on hover - dark blue #004B93 */
+.partner-item.pepsi-color .partner-logo {
+  filter: brightness(0) saturate(100%) invert(16%) sepia(95%) saturate(3619%) hue-rotate(198deg) brightness(96%) contrast(101%);
+}
+
+/* Animation keyframes for horizontal scrolling */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 40px)); /* Half of the total width plus half of the gap */
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 480px) {
+  .partners-section {
+    padding: 1rem 0 !important;
+  }
+  .partners-slider {
+    padding: 4px 0 !important;
+  }
+  .partners-track {
+    gap: 14px !important;
+    flex-wrap: nowrap !important;
+  }
+  .partner-logo {
+    width: 75px !important;
+    height: auto !important;
+    max-width: 75px !important;
+    min-width: 0 !important;
+  }
+  .partner-item {
+    padding: 2px !important;
+    min-width: unset !important;
+    max-width: unset !important;
+  }
+  .partners-section h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+} 

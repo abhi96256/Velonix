@@ -1,0 +1,38 @@
+@import './tailwind.css';
+
+/* Global styles */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, sans-serif;
+  scroll-behavior: auto;
+}
+
+body {
+  background: #000000;
+  color: #ffffff;
+}
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.filter-yellow {
+  filter: brightness(0) saturate(100%) invert(91%) sepia(100%) saturate(7480%) hue-rotate(2deg) brightness(104%) contrast(104%);
+}

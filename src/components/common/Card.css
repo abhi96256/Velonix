@@ -1,0 +1,64 @@
+/* Card component styles */
+
+.card {
+  background-color: #161616;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 30px #f1e811;
+  height: 380px;
+  width: 300px;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.card:hover {
+  transform: scale(1.06);
+  box-shadow: 0px 0px 50px #f1e811, 0 8px 32px rgba(0,0,0,0.25);
+}
+
+.card-icon {
+  margin-bottom: 2rem;
+}
+
+.card-icon img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.card-title {
+  color: #f1e811;
+  font-size: 1.875rem;
+  font-weight: 200;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  color: #9b9744;
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 75vw !important;
+    max-width: 90vw !important;
+    min-width: 0 !important;
+    margin: 0.5rem auto !important;
+    padding: 0.7rem !important;
+    box-sizing: border-box !important;
+    height: 250px !important;
+  }
+  .card-title {
+    font-size: 1rem !important;
+  }
+  .card-description {
+    font-size: 0.85rem !important;
+  }
+  .card-icon img {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+  }
+} 

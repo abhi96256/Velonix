@@ -1,0 +1,72 @@
+<svg width="1920" height="160" viewBox="0 0 1920 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_22_286)">
+<rect width="1920" height="160" fill="#121212"/>
+<circle cx="-21.3333" cy="1.33315" r="53.3333" fill="#575757"/>
+<circle cx="73.3333" cy="-1.33352" r="66.6667" fill="#575757"/>
+<circle cx="140" cy="-5.33354" r="33.3333" fill="#575757"/>
+<circle cx="242.667" cy="-1.33353" r="93.3333" fill="#575757"/>
+<circle cx="730.667" cy="17.3332" r="93.3333" fill="#575757"/>
+<circle cx="845.333" cy="41.3332" r="93.3333" fill="#575757"/>
+<circle cx="972" cy="41.3332" r="93.3333" fill="#575757"/>
+<circle cx="357.333" cy="1.33315" r="53.3333" fill="#575757"/>
+<circle cx="548" cy="-9.33352" r="42.6667" fill="#575757"/>
+<circle cx="624" cy="11.9998" r="53.3333" fill="#575757"/>
+<circle cx="449.333" cy="38.6665" r="80" fill="#575757"/>
+<g filter="url(#filter0_f_22_286)">
+<rect x="120" y="-36" width="189.333" height="189.333" rx="94.6667" fill="url(#paint0_radial_22_286)"/>
+<rect x="109.333" y="-46.6667" width="210.667" height="210.667" rx="105.333" stroke="#F1E811" stroke-opacity="0.11" stroke-width="21.3333"/>
+</g>
+<circle cx="1000" cy="28" r="40" fill="#575757"/>
+<circle cx="1080" cy="38.6667" r="80" fill="#575757"/>
+<circle cx="1173.33" cy="28" r="53.3333" fill="#575757"/>
+<circle cx="1268" cy="25.3334" r="66.6667" fill="#575757"/>
+<circle cx="1334.67" cy="21.3333" r="33.3333" fill="#575757"/>
+<circle cx="1437.33" cy="25.3333" r="93.3333" fill="#575757"/>
+<circle cx="1552" cy="28" r="53.3333" fill="#575757"/>
+<circle cx="1742.67" cy="17.3334" r="42.6667" fill="#575757"/>
+<circle cx="1818.67" cy="38.6667" r="53.3333" fill="#575757"/>
+<circle cx="1910.67" cy="44" r="80" fill="#575757"/>
+<circle cx="1644" cy="65.3334" r="80" fill="#575757"/>
+<circle cx="40" cy="-24" r="40" fill="#FFF500"/>
+<circle cx="120" cy="-13.3333" r="80" fill="#FFF500"/>
+<circle cx="213.333" cy="-24" r="53.3333" fill="#FFF500"/>
+<circle cx="308" cy="-26.6666" r="66.6667" fill="#FFF500"/>
+<circle cx="374.667" cy="-30.6667" r="33.3333" fill="#FFF500"/>
+<circle cx="477.333" cy="-26.6667" r="93.3333" fill="#FFF500"/>
+<circle cx="592" cy="-24" r="53.3333" fill="#FFF500"/>
+<circle cx="782.667" cy="-34.6666" r="42.6667" fill="#FFF500"/>
+<circle cx="858.667" cy="-13.3334" r="53.3333" fill="#FFF500"/>
+<circle cx="684" cy="13.3333" r="80" fill="#FFF500"/>
+<circle cx="852" cy="-14.6669" r="40" fill="#FFF500"/>
+<circle cx="932" cy="9.33313" r="80" fill="#FFF500"/>
+<circle cx="1025.33" cy="-14.6669" r="53.3333" fill="#FFF500"/>
+<circle cx="1120" cy="-17.3335" r="66.6667" fill="#FFF500"/>
+<circle cx="1186.67" cy="-21.3335" r="33.3333" fill="#FFF500"/>
+<circle cx="1289.33" cy="-17.3335" r="93.3333" fill="#FFF500"/>
+<circle cx="1404" cy="-14.6669" r="53.3333" fill="#FFF500"/>
+<circle cx="1594.67" cy="-25.3335" r="42.6667" fill="#FFF500"/>
+<circle cx="1670.67" cy="-4.00016" r="53.3333" fill="#FFF500"/>
+<circle cx="1496" cy="22.6665" r="80" fill="#FFF500"/>
+<circle cx="1160" cy="-37.3331" r="40" fill="#FFF500"/>
+<circle cx="1240" cy="-26.6665" r="80" fill="#FFF500"/>
+<circle cx="1333.33" cy="-37.3332" r="53.3333" fill="#FFF500"/>
+<circle cx="1428" cy="-39.9998" r="66.6667" fill="#FFF500"/>
+<circle cx="1597.33" cy="-39.9998" r="93.3333" fill="#FFF500"/>
+<circle cx="1712" cy="-37.3332" r="53.3333" fill="#FFF500"/>
+<circle cx="1804" cy="-26.6665" r="80" fill="#FFF500"/>
+</g>
+<defs>
+<filter id="filter0_f_22_286" x="89.3333" y="-66.6666" width="250.667" height="250.667" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="4.66667" result="effect1_foregroundBlur_22_286"/>
+</filter>
+<radialGradient id="paint0_radial_22_286" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(214.667 58.6667) rotate(90) scale(94.6667)">
+<stop stop-color="#F2E807"/>
+<stop offset="1" stop-color="#FCF76D" stop-opacity="0.58"/>
+</radialGradient>
+<clipPath id="clip0_22_286">
+<rect width="1920" height="160" fill="white"/>
+</clipPath>
+</defs>
+</svg>

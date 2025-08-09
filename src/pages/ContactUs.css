@@ -1,0 +1,389 @@
+.contactus-bg {
+  min-height: 100vh;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.contactus-card {
+  min-height: 480px;
+  background: rgba(10,10,10,0.75);
+  backdrop-filter: blur(23px);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px rgba(76,175,79,0.10), 0 1.5px 6px rgba(0,0,0,0.08);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+ 
+}
+.contactus-illustration {
+  flex: 0 0 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+.contactus-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.contactus-title {
+  font-size: 2rem;
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+.contactus-desc {
+  color: #bdbdbd;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  font-weight: 200;
+}
+.contactus-field {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.contactus-input {
+  width: 100%;
+  padding: 1.1rem 1rem 0.5rem 1rem;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+  font-family: inherit;
+  outline: none;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(76,175,79,0.04);
+  resize: none;
+  font-weight: 200;
+}
+.contactus-input:focus {
+  box-shadow: 0 0 0 2px #4caf4f;
+  font-weight: 200;
+}
+.contactus-field label {
+  position: absolute;
+  left: 1.1rem;
+  top: 1.1rem;
+  color: #bdbdbd;
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: 0.2s;
+  opacity: 0.8;
+}
+.contactus-input:focus + label,
+.contactus-field label.filled {
+  top: -0.7rem;
+  left: 0.9rem;
+  font-size: 0.95rem;
+  color: #4caf4f;
+  background: #232323;
+  padding: 0 0.3rem;
+  border-radius: 0.5rem;
+  opacity: 1;
+  font-weight: 200;
+}
+.contactus-btn {
+  background: #4caf4f;
+  color: #fff;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 12px 22px rgba(76,175,79,0.12);
+  transition: background 0.2s, box-shadow 0.2s;
+  width: 70%;
+  margin-left: 70px;
+  height: 50px;
+}
+.contactus-btn:disabled {
+  background: #bdbdbd;
+  color: #232323;
+  cursor: not-allowed;
+}
+
+.contactus-lottie {
+  width: 340px;
+  height: 340px;
+}
+@media (max-width: 700px) {
+  .contactus-card {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+  .contactus-illustration {
+    flex: none;
+    width: 100%;
+    margin-bottom: 1.2rem;
+  }
+  .contactus-title {
+    font-size: 1.3rem;
+  }
+}
+.contactus-extra-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
+}
+.contactus-info-section, .contactus-faq-section, .contactus-newsletter-section {
+  flex: 1 1 0;
+  min-width: 0;
+  background: rgba(10,10,10,0.45);
+  backdrop-filter: blur(24px);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 2rem 2.5rem;
+  color: #fff;
+}
+.contactus-newsletter-section {
+  margin: 2.5rem auto 2.5rem auto;
+  max-width: 900px;
+}
+@media (max-width: 900px) {
+  .contactus-extra-row {
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 98vw;
+  }
+}
+.contactus-info-section h3,
+.contactus-faq-section h3,
+.contactus-newsletter-section h3 {
+  font-size: 1.5rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+  color: #ffe066;
+}
+.contactus-info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contactus-info-section li {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  font-weight: 100;
+}
+.contactus-faq-section details {
+  margin-bottom: 1rem;
+  background: rgba(30,30,30,0.18);
+  border-radius: 0.7rem;
+  padding: 0.7rem 1rem;
+  color: #fff;
+}
+.contactus-faq-section summary {
+  font-weight: 200;
+  cursor: pointer;
+  color: #ffe066;
+  outline: none;
+}
+.contactus-faq-section p {
+  margin: 0.5rem 0 0 0;
+  color: #e0e0e0;
+}
+.newsletter-form {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+}
+.newsletter-input {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  font-size: 1.1rem;
+  background: transparent;
+  color: #fff;
+}
+.newsletter-btn {
+ 
+  color: #fff;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 200;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0px 12px 22px rgba(76,175,79,0.12);
+
+
+}
+
+@media (max-width: 700px) {
+  .contactus-info-section, .contactus-faq-section, .contactus-newsletter-section {
+    padding: 1.2rem 0.7rem;
+    max-width: 98vw;
+  }
+}
+@media (max-width: 480px) {
+  .contactus-bg {
+    padding: 1rem 1rem !important;
+    min-height: 100vh !important;
+  }
+
+  .contactus-card {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 1rem 0.3rem 1rem 0.3rem !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 2px 8px rgba(76,175,79,0.10), 0 1px 3px rgba(0,0,0,0.08) !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    gap: 0.7rem !important;
+  }
+  .contactus-illustration {
+    width: 100% !important;
+    max-width: 180px !important;
+    margin: 0 auto 1rem auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+  .contactus-form {
+    gap: 0.5rem !important;
+  }
+  .contactus-title {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.3rem !important;
+    text-align: left !important;
+    font-weight: 200;
+  }
+  .contactus-desc {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.5rem !important;
+    text-align: left !important;
+    font-weight: 200;
+  }
+  .contactus-field {
+    margin-bottom: 0.7rem !important;
+  }
+  .contactus-input {
+    font-size: 1rem !important;
+    padding: 0.8rem 0.7rem 0.5rem 0.7rem !important;
+    border-radius: 0.7rem !important;
+    font-weight: 200;
+  }
+  .contactus-btn {
+    width: 100% !important;
+    font-size: 1rem !important;
+    padding: 0.8rem 0 !important;
+    margin-top: 0.3rem !important;
+    border-radius: 0.7rem !important;
+    font-weight: 200;
+  }
+  .contactus-lottie {
+    width: 120px !important;
+    height: 120px !important;
+    margin: 0 auto 1rem auto !important;
+  }
+  .contactus-extra-row {
+    flex-direction: column !important;
+    gap: 0.7rem !important;
+    max-width: 100vw !important;
+    margin: 1rem 0 0 0 !important;
+  }
+  .contactus-info-section, .contactus-faq-section, .contactus-newsletter-section {
+    padding: 1rem 1rem !important;
+    border-radius: 1rem !important;
+    max-width: 100vw !important;
+    min-width: 0 !important;
+    font-size: 0.98rem !important;
+  }
+  .contactus-info-section h3,
+  .contactus-faq-section h3,
+  .contactus-newsletter-section h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.7rem !important;
+    font-weight: 200;
+  }
+  .newsletter-form {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+  .newsletter-input, .newsletter-btn {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    font-size: 1rem !important;
+  }
+  .newsletter-btn {
+    margin-top: 0.2rem !important;
+    font-size: 1rem !important;
+    padding: 0.8rem 0 !important;
+    border-radius: 0.7rem !important;
+  }
+  .contactus-faq-section details {
+    padding: 0.5rem 0.5rem !important;
+    font-size: 0.95rem !important;
+  }
+  .contactus-faq-section summary {
+    font-size: 1rem !important;
+    font-weight: 200;
+  }
+  .banner-bg-video, .contactus-bg video, .contactus-bg .bg-video {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    object-fit: cover !important;
+    left: 0 !important;
+    top: 0 !important;
+    position: fixed !important;
+    z-index: -1 !important;
+  }
+}
+
+.modern-contact-btn, .modern-contact-btn1 {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.modern-contact-btn .wave-svg,
+.modern-contact-btn1 .wave-svg {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+}
+
+.modern-contact-btn .wave-svg svg,
+.modern-contact-btn1 .wave-svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.modern-contact-btn .btn-text,
+.modern-contact-btn1 .btn-text {
+  position: relative;
+  z-index: 1;
+} 
