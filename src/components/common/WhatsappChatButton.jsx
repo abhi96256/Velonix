@@ -9,7 +9,7 @@ const WhatsappChatButton = () => {
   const right = isMobile ? 10 : 24;
 
   const handleClick = () => {
-    window.open('https://wa.me/917317228662', '_blank');
+    window.open('https://wa.me/917678292078', '_blank');
   };
 
   return (

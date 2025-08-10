@@ -78,20 +78,7 @@
   font-size: 1.25rem;
 }
 
-.cta-top-blur {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px; /* Adjust as needed */
-  z-index: 2;
-  pointer-events: none;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-  margin-top: -59px;
-}
+
 
 @media (max-width: 480px) {
   .cta-section {

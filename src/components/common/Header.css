@@ -9,13 +9,13 @@
 } */
 
 header {
-  background: transparent !important;
+  background: #000 !important;
   transition: background 0.3s;
 }
 
 .fixed {
   position: fixed;
-  background-color: transparent !important;
+  background-color: #000000cc !important;
   transition: background-color 0.3s ease;
 }
 
