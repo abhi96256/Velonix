@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 import './OurProduct.css';
 import './ProductCard.css';
 import ourProductVideo from '../../assets/OurProduct.mp4';
@@ -20,6 +20,18 @@ import faceIcon from '../../assets/Face.png';
 import WishlistIcon from '../../assets/Wishlist.png';
 import CartIcon from '../../assets/Cart.png';
 import { useNavigate } from 'react-router-dom';
+
+// Debug import
+console.log('Products import debug:', {
+  productsData,
+  productsDataLength: productsData?.length,
+  productsDataType: typeof productsData,
+  productsDataKeys: productsData ? Object.keys(productsData) : 'No keys'
+});
+
+// Additional debug - check if this is the right file
+console.log('File path debug:', import.meta.url);
+console.log('Direct products check:', productsData);
 
 // Replace the hardcoded products array with imported data
 // const products = [
@@ -67,23 +79,82 @@ const ProductsSection = () => {
   const speechRef = useRef(null);
   const navigate = useNavigate();
 
-  // Category navigation for Featured Products
-  const categories = ['All', 'Engine Oils', 'Hydraulic Oils', 'Gear Oils', 'ATF', 'Coolants & Fluids'];
-  const brandOptions = {
-    'Engine Oils': ['All', 'Castrol', 'Servo', 'HP', 'Others'],
-    'Hydraulic Oils': ['All', 'Castrol', 'Servo', 'HP', 'Others'],
-    'Gear Oils': ['All', 'Castrol', 'Servo', 'HP', 'Others'],
-    'ATF': ['All', 'Castrol', 'Servo', 'HP', 'Others'],
-    'Coolants & Fluids': ['All', 'Castrol', 'Servo', 'HP', 'Others'],
-  };
+  // Dynamically derive categories and brand options from products data
+  const topBrands = ['Castrol', 'Servo', 'HP', 'Motul'];
 
+  const categories = useMemo(() => {
+    const uniqueCategories = Array.from(
+      new Set(productsData.map((p) => p.category))
+    ).sort();
+    // Include a Brands pill to filter across categories by brand
+    return ['All', ...uniqueCategories, 'Brands'];
+  }, [productsData]);
+
+  const brandOptions = useMemo(() => {
+    const optionsByCategory = {};
+    const categoriesOnly = categories.filter((c) => c !== 'All' && c !== 'Brands');
+    // Per-category brand options
+    categoriesOnly.forEach((cat) => {
+      const brandsInCategory = Array.from(
+        new Set(productsData.filter((p) => p.category === cat).map((p) => p.brand))
+      ).sort();
+      
+      // Manually add Motul to Engine Oils if it's not already there
+      if (cat === 'Engine Oils' && !brandsInCategory.includes('Motul')) {
+        brandsInCategory.push('Motul');
+        brandsInCategory.sort();
+      }
+      
+      optionsByCategory[cat] = ['All', ...brandsInCategory, 'Others'];
+    });
+    // Global brand list for the Brands pill
+    const allBrands = Array.from(new Set(productsData.map((p) => p.brand))).sort();
+    // Manually add Motul to global brands if not present
+    if (!allBrands.includes('Motul')) {
+      allBrands.push('Motul');
+      allBrands.sort();
+    }
+    optionsByCategory['Brands'] = ['All', ...allBrands, 'Others'];
+    return optionsByCategory;
+  }, [categories, productsData]);
+
+  // Reset brand only when category pill is clicked (handled in click handler)
+
+  const byCategory =
+    activeFilter === 'All' || activeFilter === 'Brands'
+      ? productsData
+      : productsData.filter((p) => (p.category || '').toLowerCase() === (activeFilter || '').toLowerCase());
+
+  const filteredProducts = byCategory.filter((p) => {
+    const brand = (p.brand || '').toLowerCase().trim();
+    const sel = (selectedBrand || '').toLowerCase().trim();
+    return (
+      sel === 'all' ||
+      brand === sel ||
+      (sel === 'others' && !topBrands.map((b) => b.toLowerCase()).includes(brand))
+    );
+  });
+
+  // Debug current filter state in console
   useEffect(() => {
-    setSelectedBrand('All');
-  }, [activeFilter]);
-
-  const filteredProducts = (
-    activeFilter === 'All' ? productsData : productsData.filter((p) => p.category === activeFilter)
-  ).filter((p) => selectedBrand === 'All' || p.brand === selectedBrand || (selectedBrand === 'Others' && !['Castrol','Servo','HP'].includes(p.brand)));
+    // eslint-disable-next-line no-console
+    console.log('Filter state', {
+      activeFilter,
+      selectedBrand,
+      total: productsData.length,
+      byCategory: byCategory.length,
+      filtered: filteredProducts.length,
+    });
+    
+    // Debug products data
+    console.log('Products data debug:', {
+      productsDataLength: productsData.length,
+      productsData: productsData,
+      categories: categories,
+      topBrands: topBrands,
+      brandOptions: brandOptions
+    });
+  }, [activeFilter, selectedBrand, productsData, categories, topBrands, brandOptions]);
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
@@ -241,101 +312,168 @@ const ProductsSection = () => {
               zIndex: 5,
             }}
           >
-            {categories.map((cat) => (
-              <div
-                key={cat}
-                onMouseEnter={() => setMenuOpenCategory(cat)}
-                onMouseLeave={() => setMenuOpenCategory(null)}
-                style={{ position: 'relative', display: 'inline-block' }}
-              >
-                <button
-                  onClick={() => {
-                    setActiveFilter(cat);
-                    setMenuOpenCategory((prev) => (prev === cat ? null : cat));
-                  }}
-                  className={`category-pill ${activeFilter === cat ? 'is-active' : ''}`}
-                  style={{
-                    padding: '8px 14px',
-                    borderRadius: '999px',
-                    cursor: 'pointer',
-                    fontWeight: 600,
-                    letterSpacing: '0.2px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                  }}
+            {categories.map((cat) => {
+              // Determine what to display on the pill
+              let pillText = cat;
+              let isActive = activeFilter === cat;
+              
+              // If this is the active category and a brand is selected, show the brand name
+              if (cat === activeFilter && selectedBrand !== 'All' && cat !== 'All' && cat !== 'Brands') {
+                pillText = selectedBrand;
+                isActive = true;
+              }
+              
+              return (
+                <div
+                  key={cat}
+                  onMouseEnter={() => setMenuOpenCategory(cat)}
+                  onMouseLeave={() => setMenuOpenCategory(null)}
+                  style={{ position: 'relative', display: 'inline-block' }}
                 >
-                  {cat}
-                  {cat !== 'All' && (
-                    <span aria-hidden style={{ fontSize: 12, opacity: 0.8 }}>▾</span>
-                  )}
-                </button>
-
-                {cat !== 'All' && menuOpenCategory === cat && (
-                  <div
+                  <button
+                    onClick={() => {
+                        // When user clicks a category pill, keep current brand if still valid for new category; otherwise default to 'All'
+                        const newCategory = cat;
+                        setActiveFilter(newCategory);
+                        const validBrands = brandOptions[newCategory] || ['All'];
+                        setSelectedBrand((prev) => validBrands.includes(prev) ? prev : 'All');
+                        setMenuOpenCategory((prev) => (prev === newCategory ? null : newCategory));
+                    }}
+                    className={`category-pill ${isActive ? 'is-active' : ''}`}
                     style={{
-                      position: 'absolute',
-                      top: '110%',
-                      left: 0,
-                      background: '#0f0f0f',
-                      border: '1px solid #333',
-                      borderRadius: 10,
-                      padding: '6px',
-                      minWidth: 150,
-                      boxShadow: '0 8px 18px rgba(0,0,0,0.5)',
-                      zIndex: 10,
+                      padding: '8px 14px',
+                      borderRadius: '999px',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      letterSpacing: '0.2px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
                     }}
                   >
-                    {(brandOptions[cat] || ['All']).map((opt) => (
-                      <div
-                        key={opt}
-                        onClick={() => {
-                          setActiveFilter(cat);
-                          setSelectedBrand(opt);
-                          setMenuOpenCategory(null);
-                        }}
-                        className={`brand-menu-item ${selectedBrand === opt && activeFilter === cat ? 'is-selected' : ''}`}
-                        style={{
-                          padding: '8px 10px',
-                          borderRadius: 8,
-                          cursor: 'pointer',
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {opt}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                    {pillText}
+                    {cat !== 'All' && (
+                      <span aria-hidden style={{ fontSize: 12, opacity: 0.8 }}>▾</span>
+                    )}
+                  </button>
+
+                  {cat !== 'All' && menuOpenCategory === cat && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '110%',
+                        left: 0,
+                        background: '#0f0f0f',
+                        border: '1px solid #333',
+                        borderRadius: 10,
+                        padding: '6px',
+                        minWidth: 150,
+                        boxShadow: '0 8px 18px rgba(0,0,0,0.5)',
+                        zIndex: 10,
+                      }}
+                    >
+                      {(brandOptions[cat] || ['All']).map((opt) => (
+                        <div
+                          key={opt}
+                          onClick={() => {
+                            setActiveFilter(cat);
+                            setSelectedBrand(opt);
+                            setMenuOpenCategory(null);
+                          }}
+                          className={`brand-menu-item ${selectedBrand === opt && activeFilter === cat ? 'is-selected' : ''}`}
+                          style={{
+                            padding: '8px 10px',
+                            borderRadius: 8,
+                            cursor: 'pointer',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {opt}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-        <div className="product-grid-dark">
-          {filteredProducts.slice(0, 4).map((product) => (
-            <div className="product-card-dark" key={product.id}>
-              <div className="product-image-container">
-                <img 
-                  className="product-image-dark" 
-                  src={product.image} 
-                  alt={product.name}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "public/images/img_image_768x325.png";
-                  }}
-                  loading="lazy"
-                />
+        <div className={`product-grid-dark ${activeFilter === 'All' ? 'brand-rows' : ''}`}>
+          {filteredProducts.length === 0 && (
+            <div style={{ color: '#aaa', fontWeight: 300 }}>No products found for this filter.</div>
+          )}
+          
+          {/* Show products in brand-wise rows when "All" is selected */}
+          {activeFilter === 'All' ? (
+            // Group products by brand and display in rows
+            Object.entries(
+              filteredProducts.reduce((acc, product) => {
+                const brand = product.brand;
+                if (!acc[brand]) acc[brand] = [];
+                acc[brand].push(product);
+                return acc;
+              }, {})
+            ).map(([brand, products]) => (
+              <div key={brand} className="brand-row">
+                <h3>{brand} Products</h3>
+                <div className="brand-products-container">
+                  {products.map((product) => (
+                    <div 
+                      className="product-card-dark" 
+                      key={product.id}
+                    >
+                      <div className="product-image-container">
+                        <img 
+                          className="product-image-dark" 
+                          src={product.image} 
+                          alt={product.name}
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "/images/img_image_768x325.png";
+                          }}
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="product-card-actions">
+                        <button
+                          className="shop-now-btn"
+                          onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
+                        >
+                          View-Details
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="product-card-actions">
-                <button
-                  className="shop-now-btn"
-                  onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
-                >
-                  View-Details
-                </button>
+            ))
+          ) : (
+            // Show regular grid for specific category/brand filters
+            filteredProducts.slice(0, 4).map((product) => (
+              <div className="product-card-dark" key={product.id}>
+                <div className="product-image-container">
+                  <img 
+                    className="product-image-dark" 
+                    src={product.image} 
+                    alt={product.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/images/img_image_768x325.png";
+                    }}
+                    loading="lazy"
+                  />
+                </div>
+                <div className="product-card-actions">
+                  <button
+                    className="shop-now-btn"
+                    onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
+                  >
+                    View-Details
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
        
@@ -347,7 +485,7 @@ const ProductsSection = () => {
             ref={promoRef}
             className={`mid-card promo-mid-card exact-match-promo${promoZoom ? ' zoom-animate' : ''}${promoInView ? ' card-in-view' : ''}`}
             style={{
-              backgroundImage: `url('/images/img_rectangle_17_1.png')`,
+              backgroundImage: `url('/M1.png')`,
               backgroundPosition: `${50 + parallax.x}% ${50 + parallax.y}%`,
             }}
             onMouseMove={handlePromoMouseMove}
@@ -359,7 +497,7 @@ const ProductsSection = () => {
               <div className="promo-offer-text">
                 EXTRA <span className={`promo-offer-highlight${showPromoText ? ' show' : ''}`}>25%</span> OFF
               </div>
-              <p className="mid-card-desc-overlay">Special offer on {productsData[4].name}. Don't miss out!</p>
+              <p className="mid-card-desc-overlay">Special offer on HP products. Don't miss out!</p>
             </div>
       </div>
           {/* Video Card with scale, caption slide, entrance */}

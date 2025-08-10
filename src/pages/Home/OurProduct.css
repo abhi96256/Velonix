@@ -570,6 +570,72 @@
   scroll-behavior: auto;
 }
 
+/* Special styling for brand-wise rows when "All" filter is active */
+.product-grid-dark.brand-rows {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 2.5rem 0;
+}
+
+.product-grid-dark.brand-rows .brand-row {
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0 1rem;
+}
+
+.product-grid-dark.brand-rows .brand-row:last-child {
+  margin-bottom: 0;
+}
+
+.product-grid-dark.brand-rows .brand-row h3 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  border-bottom: 2px solid #fbbf24;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.product-grid-dark.brand-rows .brand-products-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  width: 100%;
+  max-width: 100%;
+}
+
+.product-grid-dark.brand-rows .brand-products-container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari/Opera */
+}
+
+.product-grid-dark.brand-rows .brand-products-container::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 4px;
+}
+
+.product-grid-dark.brand-rows .brand-products-container::-webkit-scrollbar-thumb {
+  background: #fbbf24;
+  border-radius: 4px;
+}
+
+.product-grid-dark.brand-rows .brand-products-container::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+.product-grid-dark.brand-rows .product-card-dark {
+  min-width: 280px;
+  flex-shrink: 0;
+  margin: 0;
+  margin-right: 0;
+}
+
 .product-grid-dark::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
